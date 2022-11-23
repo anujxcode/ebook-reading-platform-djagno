@@ -19,7 +19,7 @@ pip install Pillow==9.2.0
 ``` 
 #### Locate the directory
 And run the following command in terminal  & open any browser and type
-in browser  <b>[localhost:8000](http://localhost:8000/)</b> 
+in browser  <b>localhost:8000</b> 
 ```python
 python manage.py runserver
 ```
