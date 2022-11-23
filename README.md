@@ -17,3 +17,8 @@ pip install Django==4.0.6
 pip install django-jazzmin==2.5.0
 pip install Pillow==9.2.0
 ``` 
+#### Locate the directory
+And run the following command in terminal 
+```python
+python manage.py runserver
+```
