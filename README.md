@@ -14,6 +14,6 @@ This is the Online Book reading platform in Django - python framework. There are
 #### Install Packages
 ``` python
 pip install Django==4.0.6
-pip install  django-jazzmin==2.5.0
-pip install  Pillow==9.2.0
+pip install django-jazzmin==2.5.0
+pip install Pillow==9.2.0
 ``` 
