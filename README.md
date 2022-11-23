@@ -25,3 +25,6 @@ python manage.py runserver
 ```
 #### Database Tables
 ![image](https://user-images.githubusercontent.com/106525163/203504188-82de00d7-441c-4b1b-bd23-7cd4daef4b79.png)
+
+#### UI/UX Design
+![homeui](https://user-images.githubusercontent.com/106525163/203506054-246fe742-a923-43fd-ba5e-333b28491b36.png)
