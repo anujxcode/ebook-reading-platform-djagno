@@ -24,5 +24,5 @@ in browser  <b>localhost:8000</b> 
 python manage.py runserver
 ```
 
-#### UI/UX Design
+# UI/UX Design
 ![homeui](https://user-images.githubusercontent.com/106525163/203506054-246fe742-a923-43fd-ba5e-333b28491b36.png)
