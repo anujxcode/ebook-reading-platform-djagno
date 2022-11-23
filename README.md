@@ -27,3 +27,6 @@ python manage.py runserver
 # UI/UX Design
 ![homeui](https://user-images.githubusercontent.com/106525163/203506054-246fe742-a923-43fd-ba5e-333b28491b36.png)
 ![Profileg](https://user-images.githubusercontent.com/106525163/203507305-2d3c36b8-46d2-463c-96ed-0bc87aba51c9.png)
+
+# Database Design
+![image](https://user-images.githubusercontent.com/106525163/203507870-642283cb-e241-4247-8afa-bc3976da38a8.png)
