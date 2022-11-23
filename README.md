@@ -1,2 +1,13 @@
-# ebook-reading-platform-djagno
-This is online website to read e-books this website uses HTML,CSS,JAVASCRIPT in front-end and users DJANGO in back-end 
+# Read Documentation
+### About Project
+This is the Online Book reading platform in Django - python framework. In this project, I used the following technologies 
+#### Frontend
+>  HTML5
+>  CSS3
+> JavaScript 
+
+#### Backend
+> Django 
+> SQLite
+ 
+
