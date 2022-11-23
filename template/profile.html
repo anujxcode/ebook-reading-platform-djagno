@@ -1,0 +1,62 @@
+{% extends 'grandmaster.html' %}
+
+<!--page title  -->
+{% block title %}Profile {% endblock title %}
+
+<!-- hero titile -->
+{% block herotitle %}Sign Up{% endblock herotitle %}
+{% block hero_text %}Sign up and enjoy free book reading!{% endblock hero_text %}
+
+{% block navlinks %}
+<ul>
+    <li ><a href="/index/"><i class="fas fa-home"></i> HOME</a></li>
+    <li > <a href="/books/"><i class="fas fa-book"></i>BOOKS</a></li>
+    <li > <a href="/about/"> <i class="fas fa-address-card"></i>ABOUT</a></li>
+    <li> <a href="/savedbook/"><i class="fas fa-bookmark"></i>SAVED BOOKS</a></li>
+    <li> <a href="/contact/"><i class="fab fa-telegram-plane"></i> CONTACT</a></li>  
+</ul>
+{% endblock navlinks %}
+
+<!-- content body -->
+{% block contentbody %}  
+   
+    <section>
+        {% for i in rd %}
+        <div class="profile">
+            <div class="fade-overlay"></div>
+            <div class="row py-3 align-start">
+                <div class="col-lg-6 z-10  px-5">
+                    <br><br><br>
+                    <h4 style="text-transform:capitalize;">{{i.name}}</h4>
+                    <p>{{user.username}}</p>
+                    <br>
+                    <div class="lower">
+                        <div style="display: flex; align-items: center;">
+                            <p style="text-transform:capitalize; margin-right: 30px;"><i class="fas fa-user"></i>{{i.gender}}</p> 
+                            <p > <span style="font-size:20;font-weight:600;color:#333;">Age:</span>  {{i.age}}</p>
+                        </div>
+                        <p><i class="fa-solid fa-envelope"></i>{{user.email}}</p>
+                        <p><i class="fa-solid fa-phone"></i>+91 {{i.phone}}</p>
+                        <p><i class="fa-solid fa-location-dot"></i>{{i.city}}</p>
+                    </div>
+                    <div style="margin-top:40px;">
+                        <a href="/profile_edit/{{i.id}}/" style="font-weight:600;color:#333; border-bottom:2px solid #333; text-decoration:none;">Edit Profile</a>
+                    </div>
+                    
+
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="imgBox">
+                        {% if i.user_img %}
+                            <img src="{{ i.user_img.url }}">
+                        {% else %} 
+                            <img src="../static/images/download.png">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+{% endblock contentbody %}
