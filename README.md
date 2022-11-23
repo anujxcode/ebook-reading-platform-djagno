@@ -23,3 +23,4 @@ in browser  <b>localhost:8000</b> 
 ```python
 python manage.py runserver
 ```
+![home](https://user-images.githubusercontent.com/106525163/203502324-360426bb-96c7-4bce-aa09-3ef2f2ef9824.png)
