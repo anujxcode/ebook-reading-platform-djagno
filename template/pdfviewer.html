@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf Viewer | onBook - online book reading platform
+    </title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- font-aweome 2 -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon/logo.png' %}" type="image/x-icon">
+
+    <!-- pdf reader css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pdfcss.css' %}">
+
+
+</head>
+
+<body>
+    <nav class="pdf-top-nav">
+        <div class="row">
+            <div class="col">
+                <h4> <i class="fa-solid fa-file-lines"></i> &nbsp;<span> {{bookName}}</span></h4>
+                <input type="hidden" id="bookurlid" value="{{bookurl}}">
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col" style="margin-right: 30px;">
+                        <p> <span id="page-num"></span> | <span id="pageCount"></span></p>
+
+                    </div>
+                    <div class="col">
+                        <!-- right side -->
+                        <div class="quickLink">
+                            <div class="dropdown">
+                                <div class="account">
+                                    <span><i class="fas fa-user"></i></span>
+                                    {% if user.is_authenticated == True %}
+                                    <span class="txt">&nbsp;&nbsp;{{user.username}}</span>
+                                    {% else %}
+                                    &nbsp;&nbsp;<span class="txt">Account</span>
+                                    {% endif %}
+                                </div>
+                                <div class="dropdown-content">
+                                    {% if user.is_authenticated %}
+                                    <p style="color:gray;font-size: 14px; margin-bottom: 20px ;">Hello,<b>
+                                            {{user.username}}
+                                        </b> </p>
+                                    {% if user.is_superuser %}
+                                    <a href="/admin/">
+                                        <p class="hov"><i class="fa-solid fa-grip"></i> &nbsp;Admin Pannel </p>
+                                    </a>
+                                    <a href="/admin/home/book_highlight/" target="_blank">
+                                        <p class="hov"><i class="fa-solid fa-plus"></i> &nbsp;Add Highlight </p>
+                                    </a>
+                                    {% endif%}
+                                    <a href="/profile/">
+                                        <p class="hov"><i class="fas fa-user-circle"></i>&nbsp;Profile </p>
+                                    </a>
+                                    <a href="/account/changepassword/">
+                                        <p class="hov"><i class="fas fa-key"></i>&nbsp;Change Password </p>
+                                    </a>
+                                    <a href="/savedbook/">
+                                        <p class="hov"><i class="fas fa-bookmark"></i>&nbsp;Saved & Requests </p>
+                                    </a>
+                                    <a href="/request/">
+                                        <p class="hov"><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;New Request
+                                        </p>
+                                    </a>
+                                    <div id="sprater"></div>
+                                    <a href="/account/logout/">
+                                        <p class="hov">Log Out</p>
+                                    </a>
+                                    {% else %}
+                                    <p style="color:gray;font-size: 14px; margin-bottom: 20px   ;">Account </b> </p>
+                                    <a href="/account/signup/">
+                                        <p class="hov">Sign Up</p>
+                                    </a>
+                                    <a href="/account/signin/">
+                                        <p class="hov">Sign In
+                                    </a></p></a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="pdfNav">
+        <div class="nav-btn">
+            <span id="zoom-in"><i class="fa-regular fa-square-plus"></i> </span>
+            <p style="display:inline; color:#ccc;"> | </p>
+            <span id="zoom-out"><i class="fa-regular fa-square-minus"></i> </span>
+        </div>
+
+        <div class="nav-btn">
+            <span id="btnNext"><i class="fa-solid fa-angle-down"></i> </span>
+            <p style="display:inline; color:#ccc;"> | </p>
+            <span id="btnPrev"><i class="fa-solid fa-angle-up"></i> </span>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="pdfbox" id="pdfbox"> -->
+    <canvas class="pdfreaderbox" id="pdfreaderbox"></canvas>
+    <!-- </div> -->
+
+
+    <!-- pdf viewer script -->
+    <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
+    <script src="{% static 'js/pdfviewer.js'%}" type="text/javascript"></script>
+</body>
+
+</html>

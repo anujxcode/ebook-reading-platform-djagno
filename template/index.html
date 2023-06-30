@@ -1,0 +1,183 @@
+{% extends 'grandmaster.html' %}
+
+{% block title %} home {% endblock title %}
+
+<!-- navlinks -->
+{% block navlinks %}
+<ul>
+    <li class="active"><a href="/index/"><i class="fas fa-home"></i> HOME</a></li>
+    <li> <a href="/books/"><i class="fas fa-book"></i>BOOKS</a></li>
+    <li> <a href="/about/"> <i class="fas fa-address-card"></i>ABOUT</a></li>
+    <li> <a href="/savedbook/"><i class="fas fa-bookmark"></i>SAVED BOOKS</a></li>
+    <li> <a href="/contact/"><i class="fab fa-telegram-plane"></i> CONTACT</a></li>  
+</ul>
+{% endblock navlinks %}
+<!-- content body -->
+{% block contentbody %}  
+
+
+<!--hero banner  -->
+<section class="hero">
+    <div class="hero-content"> 
+        <form action="/books/">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" list="booksearchlist" name="q" id="searchbox" placeholder="search book">
+
+            <datalist id ="booksearchlist">
+                {% for i in bookslist %}
+                <option value="{{i.book_title}}">  {{i.book_author }} </option>
+                {% endfor %}
+            </datalist>
+        </form>
+    </div>
+ </section>
+
+    <!--Cetegory section -->
+    <section >
+        <div class="title">
+           <h4>| Category</h4>
+           <p>Choose books your likes</p>
+       </div>
+        <div class="container">
+            <div class="row content-center">
+                {% for cat in category %}
+                <a href="/books/?categories={{cat.id}}">
+                    <div class="col-lg-4">
+                        <img src="{{ cat.category_img.url }}" alt="">
+                        <div class="fade-overlay">
+                            <h3>{{cat.category_name}}</h3>
+                            <p>{{cat.category_name}}</p>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- <section>
+        <div class="highlights" style="max-width:700px">
+            <h5>Book Highlights</h5><br>
+    
+            <div class="owl-carousel owl-theme">
+                <div class="item card_item"><h4>
+                   <q> There is gold everywhere.
+                    Most people are not trained to see it.</q></h4></div>
+                <div class="item card_item"><h4><q> The poor and the middle class work for money.
+                    The rich have money work for them.</q></h4></div>
+                <div class="item card_item"><h4><q> The word ‘emotion’ stands for ‘energy in motion.</q></h4></div>
+                <div class="item card_item"><h4><q> Unfortunately, for many people
+                    school is the end, not the beginning </q></h4></div>
+                <div class="item card_item"><h4><q> It’s not how much money you make.
+                    It’s how much money you keep </q></h4></div>
+            </div>
+        </div>
+    </section> -->
+  
+
+    
+    <!--About section -->
+   <section  id="about-bx">
+       <div class="title">
+           <h4>| About</h4>
+           <p>Know who we are?</p>
+       </div>
+
+       <div class="about-bx">
+           <div class="col-bx">
+               
+            <div>
+                <p>
+                    This project OnBook - Online Books reading Platform is develop for those student as
+                    well as those people who likes the book reading. This project solve the all problems
+                    of readers. In this Website Readers can make their profile on the website and add
+                    their favourite book in Saved Book Section and After login they can also able to
+                    Make a book request which is currently is not available on website
+                </p>
+                <br />
+                <br />
+                <p>
+                    We have Two modules in this website. First User Module or Reader Module and
+                    Second is Admin Module
+                </p>
+                 <br />
+                <br />
+                <p>
+                    Project By <b> Anuj Rathore</b>
+                </p>
+                <ul class="aboutpage-links">
+                    <li><a href="https://wa.me/916355121278" target="_blank"><i class="fa-brands fa-whatsapp"></i></i> <span>Whatsapp</span></a></li>
+                    <li><a href="https://www.instagram.com/aj_creations77/?hl=en" target="_blank"><i class="fa-brands fa-instagram"></i> <span>Instagram </span></a></li>
+                    <li><a href="https://github.com/anujxcode" target="_blank"><i class="fa-brands fa-github"></i><span>GitHub</span> </a></li>
+                    <li><a href="https://www.linkedin.com/in/aj-rathore-121488224/" target="_blank"><i class="fa-brands fa-linkedin"></i><span>Linkedin</span></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCiA0IKwfYLBJHWCCkgrPPYQ" target="_blank"><i class="fa-brands fa-youtube"></i><span>You Tube</span></a></li>
+                  
+                </ul>
+            </div>
+                <div class="btn btn_css3">
+                    <a href="../static/Docs/project_docs.pdf" target="_blank">Know More</a>
+                </div>
+           </div>
+            <div class="col-bx about_img">
+                <img  src="../static/images/ABOUT_IMG1.png"/>
+            </div>
+        </div>
+   </section>
+
+    <!--Request section -->
+   <section class="request-book">
+       <div class="title">
+           <h4>| Request </h4>
+           <p>Request a book which you want to read and it's not ab right now</p>
+       </div>
+
+      
+       <div class="request-bx" id ="request">
+        <form action ="/" method="post">
+          {% csrf_token %}
+            <span id="request-input-bx">
+                 <input type="text" name="reqbook" placeholder="Enter Book Name">
+                 &nbsp; &nbsp;&nbsp; &nbsp;
+                 <input type="text" name="reqauthor" placeholder="Enter Author Name">
+            </span>
+            
+            <span>
+             <input type="submit"  value="Request" class="btn_css rq_btn " />
+            </span>
+           
+            <div class="note">
+                <p><strong>Note: </strong> Don't ask for school,college or examination specific books(Basically Academic Book) for they are more prone to copayright issues.</p>
+            </div>
+      </form>
+     </div>  
+   </section>
+
+
+    <!--contact section -->
+   <section class="contact" id="contact-section">
+       <div class="title">
+           <h4>| Contact Us</h4>
+           <p>if you have any problem. Please Let us know</p>
+       </div>
+         <div class="about-bx ">
+           <div class="col-bx  about_img size">
+                  <img  src="../static/images/mail.png"/> 
+           </div>
+            <div class="col-bx ">
+                <div >
+                   <div class="contact-details">
+                        <a href="mailto:ajrathore1800@gmail.com">
+                            <i class="fas fa-envelope"></i> onlineBookshelp@gmail.com
+                        </a>
+                    </div>
+                   <div class="contact-details">
+                        <a href="#"> 
+                            <i class="fas fa-mobile"></i> +91 635 512 1278
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+
+{% endblock contentbody %}  

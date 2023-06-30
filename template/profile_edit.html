@@ -1,0 +1,76 @@
+{% extends 'grandmaster.html' %}
+
+<!--page title  -->
+{% block title %}Profile {% endblock title %}
+
+<!-- hero titile -->
+{% block herotitle %}Sign Up{% endblock herotitle %}
+{% block hero_text %}Sign up and enjoy free book reading!{% endblock hero_text %}
+
+{% block navlinks %}
+<ul>
+    <li ><a href="/index/"><i class="fas fa-home"></i> HOME</a></li>
+    <li > <a href="/books/"><i class="fas fa-book"></i>BOOKS</a></li>
+    <li > <a href="/about/"> <i class="fas fa-address-card"></i>ABOUT</a></li>
+    <li> <a href="/savedbook/"><i class="fas fa-bookmark"></i>SAVED BOOKS</a></li>
+    <li> <a href="/contact/"><i class="fab fa-telegram-plane"></i> CONTACT</a></li>  
+</ul>
+{% endblock navlinks %}
+
+<!-- content body -->
+{% block contentbody %}  
+   
+    <section>
+        <form action="/profile_edit/{{uid.id}}/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile">
+            <div class="fade-overlay"></div>
+            <div class="row">
+                <div class="col-lg-6 z-10  px-5">
+                    <!-- <h4>{{uid.name}}</h4> -->
+                    <h4><input type="text" value="{{uid.name}}" name="name" class="profile-input"></h4>
+                    <p>{{user.username}}</p>
+                    <br>
+                    <div class="lower">
+                        <div style="display: flex; align-items: center;">
+                            <p style="text-transform:capitalize; margin-right: 30px;"><i class="fas fa-user"></i>
+                                <select name="gender" class="profile-input w-100"  id="gender">
+                                    <option aria-readonly="true" value="{{uid.gender}}" selected> {{uid.gender}} </option>
+                                    <option value="male" >Male</option>
+                                    <option value="female">Female</option>
+                                </select> 
+                            </p> 
+                            <p > <span style="font-size:20;font-weight:600;color:#333;">Age:</span> <input type="text" name ="age" class="profile-input w-100" value="{{uid.age}}"> </p>
+                        </div>
+                        <p><i class="fa-solid fa-envelope"></i><input type="text" value="{{user.email}}" name ="email" class="profile-input"></p>
+                        <p><i class="fa-solid fa-phone"></i><input type="text" value="{{uid.phone}}" name ="phone" class="profile-input"></p>
+                        <p><i class="fa-solid fa-location-dot"></i><input type="text" value="{{uid.city}}"  name ="city" class="profile-input"></p>
+                    </div>
+                    <div class="imguplaod" style="margin-top:20px;">
+                         <input type="file" class="z-10" name="pro_pic"  value="{{uid.user_img}}"  accept="image/png, image/jpeg" id="imgUplaod" >
+                        <br> <label>Selected: <span style="color:green;font: size 14px; ">{{uid.user_img.url}}</span></label>
+                        <input type="hidden" name="imgurl" value="{{uid.user_img.url}}">
+                    
+                    </div>
+                    <div style="margin-top:20px;">
+                        <input type="submit" style="background:none;border:none; font-size:18px;margin-bottom:20px; font-weight:600;color:#333; border-bottom:2px solid #333; text-decoration:none;" value="Save"> &nbsp;&nbsp;
+                        <a href="/profile/" style="font-size:18px;margin-bottom:20px; font-weight:600;color:#333; border-bottom:2px solid #333; text-decoration:none;">Cancel</a>
+                    </div>
+                    
+
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="imgBox">
+                        {% if i.user_img %}
+                            <img src="{{ uid.user_img.url }}">
+                        {% else %} 
+                            <img src="../static/images/download.png">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    </section>
+{% endblock contentbody %}

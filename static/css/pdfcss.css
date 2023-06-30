@@ -1,0 +1,125 @@
+*{
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+    font-family:Calibri;
+}
+
+*::selection {
+    background:yellow;
+    color:black;
+    font-weight:bold;
+}
+
+::-webkit-scrollbar{
+    width:6px;
+}
+::-webkit-scrollbar-track{
+    background:transparent;
+    border-radius:50%;
+}
+::-webkit-scrollbar-thumb{
+    border-radius:20px;
+    background:#1A000F;
+}
+
+
+.pdf-top-nav{
+    background:#1A000F;
+    color:#666;
+    padding: 12px 100px;
+    position: fixed;
+    top:0;left:0;right:0;
+    z-index: 100;
+    user-select: none;
+}
+.pdf-top-nav .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.pdf-top-nav .row .col h4{
+    font-size: 17px;
+    font-weight: 400;
+    color:#ddd;
+}
+body,
+.pdfbox{
+    width:100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: grid;
+    place-items: center;
+    background:#2b1b24;
+    margin-top: 50px;
+    height: 100vh;
+}
+
+.pdfNav{
+    position:fixed;
+    bottom: 50px;
+    right:50px;
+}
+.nav-btn{
+    margin-bottom: 10px;
+    padding:17px 0px;
+    border-radius: 20px;
+    background:#1A000F;
+    user-select: none; 
+}
+
+
+
+.nav-btn span{
+    background:#1A000F;
+    color:#fff;
+    padding:17px 24px;
+    border-radius: 20px;
+    transition: .4s;
+    cursor: pointer;
+    
+}
+.nav-btn span:hover{
+    background:red;
+}
+
+#page-num{
+    color:#ccc;
+}
+
+#add-highlight{
+    background:none;
+    padding:5px 24px;
+    border:2px solid #ccc;
+    color:#ccc;
+    font-weight: 600;
+    border-radius: 5px;
+    text-decoration: none;
+
+    transition: .4s;
+}
+
+#add-highlight:hover{
+    background:red;
+    border:2px solid red;
+    color:#fff;
+}
+
+#text-layer { 
+    position: absolute;
+     left: 0;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     overflow: hidden;
+     opacity: 0.2;
+     line-height: 1.0;
+ }
+ 
+ #text-layer > div {
+     color: transparent;
+     position: absolute;
+     white-space: pre;
+     cursor: text;
+     transform-origin: 0% 0%;
+ }

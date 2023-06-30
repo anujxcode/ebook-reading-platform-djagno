@@ -1,0 +1,36 @@
+{% extends 'grandmaster.html' %}
+{% block title %} contact {% endblock title %}
+
+
+{% block navlinks %}
+<ul>
+    <li ><a href="/index/"><i class="fas fa-home"></i> HOME</a></li>
+    <li > <a href="/books/"><i class="fas fa-book"></i>BOOKS</a></li>
+    <li > <a href="/about/"> <i class="fas fa-address-card"></i>ABOUT</a></li>
+    <li> <a href="/savedbook/"><i class="fas fa-bookmark"></i>SAVED BOOKS</a></li>
+    <li class="active"> <a href="/contact/"><i class="fab fa-telegram-plane"></i> CONTACT</a></li>  
+</ul>
+{% endblock navlinks %}
+
+{% block contentbody %}
+
+    <!--contact section -->
+    <section class="contact " id="contact-section" style="margin:50px 0px ;">
+        <div class="title">
+            <h4>| Contact Us</h4>
+            <p>if you have any problem. Please Let us know</p>
+        </div>
+          <div class="about-bx ">
+            <div class="col-bx  about_img size">
+                   <img  src="../static/images/mail.png"/> 
+            </div>
+             <div class="col-bx size">
+                 <div >
+                    <div class="contact-details"><a href="mailto:ajrathore1800@gmail.com"><i class="fas fa-envelope"></i>onlineBookshelp@gmail.com </a></div>
+                    <div class="contact-details"><a href="#"> <i class="fas fa-mobile"></i> +91 635 512 1278</a></div>
+                 </div>
+             </div>
+         </div>
+    </section>
+
+{% endblock contentbody %}

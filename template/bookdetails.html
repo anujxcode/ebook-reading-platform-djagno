@@ -1,0 +1,206 @@
+{% extends 'grandmaster.html' %}
+
+<!--page title  -->
+{% block title %}Book Details {% endblock title %}
+{% block navlinks %}
+<ul>
+    <li><a href="/index/"><i class="fas fa-home"></i> HOME</a></li>
+    <li> <a href="/books/"><i class="fas fa-book"></i>BOOKS</a></li>
+    <li> <a href="/about/"> <i class="fas fa-address-card"></i>ABOUT</a></li>
+    <li> <a href="/savedbook/"><i class="fas fa-bookmark"></i>SAVED BOOKS</a></li>
+    <li> <a href="/contact/"><i class="fab fa-telegram-plane"></i> CONTACT</a></li>
+</ul>
+{% endblock navlinks %}
+
+{% block contentbody %}
+<section class="detailsPage">
+    <div class="dbrow">
+        <div class="dbcol-bx1">
+            <div class="img-bx">
+                <img src="{{book.book_img.url}}" alt="">
+                <div class="freetag">
+                    <p><i class="fas fa-tag"></i> &nbsp;Free</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="dbcol-bx2">
+            <!-- <h3>Death Before Breakfastr</h3> -->
+            <h3>{{book.book_title}}</h3>
+            <!-- <h4>George Bellairs</h4> -->
+            <h4>{{book.book_author}}</h4>
+            <div class="category">
+                <p>Category: <span> {{book.category}} </span> <br>Page: <span>{{book.book_page}}</span></p>
+                <div>
+                    <p>Publish Date: <span>{{book.book_upload_date}}</span> <br> Language:
+                        <span>{{book.book_lng}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="about_book">
+                <h4>About Book</h4>
+                <p>{{book.book_desc}}</p>
+            </div>
+            <div class="book_rating">
+                <span>
+                    <i class="fa-solid fa-star"></i> {{avgRating}}<span> | {{ratingCount}} rating & {{reviewCount}}
+                        reviews</span>
+                </span>
+
+            </div>
+            <div class="btns">
+                <div style="display:flex;align-items: center;" >
+                    <div>
+                        <span>
+                            <form action="/pdfviewer/" >
+                                <input type="hidden" name="bookurl" id="bookurl" value="{{book.book_file.url}}">
+                                <input type="submit" id="readnowbtn" value="READ NOW">
+                            </form>
+                        </span>
+                    </div>
+
+                    <div>
+                        <span class="btnspan">
+                            {% if is_book_saved %}
+                            <a href="/savedbook/">Saved !</a>
+                            {% else %}
+                            <form action="/savedbook/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="book_id" value="{{book.id}}" id="book_id">
+                                <button type="submit"
+                                    style="background: none;outline:none;border:none;color:#fff;font-size:18px;">SAVE
+                                    BOOK</button>
+                            </form>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+               
+                <!-- <span><a href="{{book.book_file.url}}">READ NOW</a></span> -->
+                
+              
+
+            </div>
+
+          
+            {% if highlight %}
+            <div class="highlights" style="max-width:700px">
+                <h5>Book Highlights</h5><br>
+
+                <div class="owl-carousel owl-theme">
+                    {% for hlight in highlight %}
+                    <div class="item card_item"><h4>
+                       <q> 
+                            {{hlight.highlight}}
+                        </q>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+            {% endif %}
+
+            <div class="book_review">
+                <h5>Rating & reviews</h5><br>
+
+                <form action="/rating/" method="post">
+                    {% csrf_token %}
+                    <div class="row" style="padding-right: 25px;">
+
+                        <div class="col">
+                            {% if is_rated %}
+                                {% if yourRating %}
+                                    {% for j in yourRating %}
+                                    <h4>Your rating | <small><i class="fa-solid fa-star"></i> {{j.book_rating}}.0 </small> </h4>
+                                    <p style="max-width: 400px;color:#666;margin-bottom: 12px;">{{j.book_review}}</p>
+                                    <small>Thank you ! rating & review this book. </small>
+                                    {% endfor %}
+                                {% endif %}
+                            {% else %}
+                                <div class="give_rating">
+                                    <input type="radio" name="rating" value="5" id="rate_5"><label for="rate_5"
+                                        class="fa-solid fa-star star_class"></label>
+                                    <input type="radio" name="rating" value="4" id="rate_4"><label for="rate_4"
+                                        class="fa-solid fa-star star_class"></label>
+                                    <input type="radio" name="rating" value="3" id="rate_3"><label for="rate_3"
+                                        class="fa-solid fa-star star_class"></label>
+                                    <input type="radio" name="rating" value="2" id="rate_2"><label for="rate_2"
+                                        class="fa-solid fa-star star_class"></label>
+                                    <input type="radio" name="rating" value="1" id="rate_1"><label for="rate_1"
+                                        class="fa-solid fa-star star_class"></label>
+                                </div>
+                            {% endif %}
+                        </div>
+
+
+                        <div class="col">
+                            <div class="book_rating">
+                                <span>
+                                    <i class="fa-solid fa-star"></i> {{avgRating}}<span> | {{ratingCount}} rating &
+                                        {{reviewCount}} reviews</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                   
+                    <div class="give_review">
+                        {% if is_rated %}
+
+                        {% else %}
+                        <div>
+                                <input type="text" disabled name="review" placeholder="give us rating to review"
+                                    id="review">
+                                <div class="book_review_line"></div>
+
+                                <input type="hidden" name="rated_book" value="{{book.id}}">
+                            </div>
+
+                            <input type="submit" id="post_review" class="post_review" value="Post">
+                        {% endif %}
+                    </div>
+                </form>
+                <div class="top_reviews">
+                    <h5>Reviews</h5>
+
+
+                    <!-- review box -->
+
+                    {% if allreview %}
+                    {% for x in allreview %}
+                    <div class="review-bx" style="padding: 12px;">
+                        <div class="user-info">
+                            <span>{{x.user}}</span><span style="font-size: 12px"> |<i class="fa-solid fa-star"></i>
+                                {{x.book_rating}}.0<span></span> </span>
+                        </div>
+                        <div class="review-text">
+                            {{x.book_review}}
+                        </div>
+
+                        <div class="review-posted-date">
+                            <small> publish date : {{x.posted_date}} </small>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    {% else %}
+                    <p style="margin-top: 15px;color:#666;">no review yet on this book</p>
+                    {% endif %}
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+     {% load static %}
+     <!-- pdf viewer script -->
+     <script src="{% static 'js/pdfviewer.js'%}" type="text/javascript"></script>
+</section>
+{% endblock contentbody %}
+
