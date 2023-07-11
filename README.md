@@ -9,6 +9,29 @@ This is the Online Book reading platform in Django - python framework. There are
 #### Backend
 > Django,
 > SQLite
+
+## Features & Functionalitys
+###### Common account management features for both admin & user
+- Signup / Login
+- Editing Profile upload profile picture
+- Rest password with email OTP
+- Change Password
+
+###### User Module
+- search books
+- Filter books by category
+- Save Books for read later
+- Request for a Book that is not on website
+- Rating & Review
+- Read Book in PDF Viewer(in built created using javascript)
+
+###### Admin Module
+- Manage Users (delete/edit)
+- Manage Category(create/update/delete/read)
+- Manage Books(create/update/delete/read)
+- Book Requests(reject/accept/upload)
+- Manage Book Highlights
+  
  
 ## How to Run this project in your pc
 #### Install Packages
