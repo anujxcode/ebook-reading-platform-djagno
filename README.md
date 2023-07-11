@@ -25,8 +25,16 @@ python manage.py runserver
 ```
 
 # UI/UX Design
-![homeui](https://user-images.githubusercontent.com/106525163/203506054-246fe742-a923-43fd-ba5e-333b28491b36.png)
-![Profileg](https://user-images.githubusercontent.com/106525163/203507305-2d3c36b8-46d2-463c-96ed-0bc87aba51c9.png)
+![Frame 3](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/3a6a96f5-6c51-459a-be9e-b1e46d04aba2)
+![Frame 2](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/9251b6dc-7db4-443c-a8b4-c1fdf4bde583)
+![homeg](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/a5494933-8e2b-4225-a87d-cce651ea4693)
+![Frame 7](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/05b3b792-769c-4e39-b05c-bc0132998937)
+![Frame 5](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/0c8555a1-3111-4ea3-adc6-ea0980390cf4)
+![Frame 4](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/4d5d588f-b39c-4451-bbe9-0869b087fb06)
+![Frame 6](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/1bd8d6e4-89ac-4285-b822-44f73cd0343d)
+![book-deailtsg](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/8d30d8ba-483c-46dd-a5a7-0e1658495d75)
+
+
 
 # Database Design
 ![image](https://user-images.githubusercontent.com/106525163/203507870-642283cb-e241-4247-8afa-bc3976da38a8.png)
