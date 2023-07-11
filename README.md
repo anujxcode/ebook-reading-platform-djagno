@@ -57,6 +57,7 @@ python manage.py runserver
 ![Frame 5](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/1c4b6984-8b72-4eba-b40d-61cdbe9938a4)
 ![Frame 6](https://github.com/anujxcode/ebook-reading-platform-djagno/assets/106525163/2d2efcb6-f597-4f9b-847f-599b3f191863)
 
-
+<!--
 # Database Design
 ![image](https://user-images.githubusercontent.com/106525163/203507870-642283cb-e241-4247-8afa-bc3976da38a8.png)
+-->
